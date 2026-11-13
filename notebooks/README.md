@@ -1,5 +1,391 @@
+[Analysis board.ipynb](https://github.com/user-attachments/files/34803643/Analysis.board.ipynb)
 # Notebooks
 
 Place your Jupyter notebooks here for the full analysis.
 
 Example: `northwind_analysis.ipynb`
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "544524bd",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "b68adf61",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Pandas DataFrames for each CSV file\n",
+    "\n",
+    "customer = pd.read_csv('https://raw.githubusercontent.com/tvfukuda/Northwind_csv/main/customers.csv')\n",
+    "category = pd.read_csv('https://raw.githubusercontent.com/tvfukuda/Northwind_csv/main/categories.csv')\n",
+    "employee = pd.read_csv('https://raw.githubusercontent.com/tvfukuda/Northwind_csv/main/employees.csv')\n",
+    "order = pd.read_csv('https://raw.githubusercontent.com/tvfukuda/Northwind_csv/main/orders.csv')\n",
+    "orders_detail = pd.read_csv('https://raw.githubusercontent.com/tvfukuda/Northwind_csv/main/order_details.csv')\n",
+    "product = pd.read_csv('https://raw.githubusercontent.com/tvfukuda/Northwind_csv/main/products.csv')\n",
+    "shipper = pd.read_csv('https://raw.githubusercontent.com/tvfukuda/Northwind_csv/main/shippers.csv')\n",
+    "supplier = pd.read_csv('https://raw.githubusercontent.com/tvfukuda/Northwind_csv/main/suppliers.csv')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "id": "0dfff6d3",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "                   company_name    revenue\n",
+      "0                    QUICK-Stop  117483.39\n",
+      "1            Save-a-lot Markets  115673.39\n",
+      "2                  Ernst Handel  113236.68\n",
+      "3  Hungry Owl All-Night Grocers   57317.39\n",
+      "4    Rattlesnake Canyon Grocery   52245.90\n",
+      "5                 Hanari Carnes   34101.15\n",
+      "6                Folk och fä HB   32555.55\n",
+      "7                Mère Paillarde   32203.90\n",
+      "8               Königlich Essen   31745.75\n",
+      "9                 Queen Cozinha   30226.10\n",
+      "                   company_name    revenue  pct_of_total\n",
+      "0                    QUICK-Stop  117483.39          8.67\n",
+      "1            Save-a-lot Markets  115673.39          8.54\n",
+      "2                  Ernst Handel  113236.68          8.36\n",
+      "3  Hungry Owl All-Night Grocers   57317.39          4.23\n",
+      "4    Rattlesnake Canyon Grocery   52245.90          3.86\n",
+      "5                 Hanari Carnes   34101.15          2.52\n",
+      "6                Folk och fä HB   32555.55          2.40\n",
+      "7                Mère Paillarde   32203.90          2.38\n",
+      "8               Königlich Essen   31745.75          2.34\n",
+      "9                 Queen Cozinha   30226.10          2.23\n"
+     ]
+    },
+    {
+     "ename": "PermissionError",
+     "evalue": "[Errno 13] Permission denied: 'top_10_customers.csv'",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[31m---------------------------------------------------------------------------\u001b[39m",
+      "\u001b[31mPermissionError\u001b[39m                           Traceback (most recent call last)",
+      "\u001b[36mCell\u001b[39m\u001b[36m \u001b[39m\u001b[32mIn[21]\u001b[39m\u001b[32m, line 23\u001b[39m\n\u001b[32m     19\u001b[39m \u001b[38;5;66;03m# Optional: percentage of total revenue\u001b[39;00m\n\u001b[32m     20\u001b[39m total_revenue = customer_revenue[\u001b[33m'revenue'\u001b[39m].sum()\n\u001b[32m     21\u001b[39m top_10[\u001b[33m'pct_of_total'\u001b[39m] = (top_10[\u001b[33m'revenue'\u001b[39m] / total_revenue * \u001b[32m100\u001b[39m).round(\u001b[32m2\u001b[39m)\n\u001b[32m     22\u001b[39m print(top_10)\n\u001b[32m---> \u001b[39m\u001b[32m23\u001b[39m top_10.to_csv(\u001b[33m'top_10_customers.csv'\u001b[39m, index=\u001b[38;5;28;01mFalse\u001b[39;00m)\n",
+      "\u001b[36mFile \u001b[39m\u001b[32m~\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\pandas\\core\\generic.py:3988\u001b[39m, in \u001b[36mNDFrame.to_csv\u001b[39m\u001b[34m(self, path_or_buf, sep, na_rep, float_format, columns, header, index, index_label, mode, encoding, compression, quoting, quotechar, lineterminator, chunksize, date_format, doublequote, escapechar, decimal, errors, storage_options)\u001b[39m\n\u001b[32m   3984\u001b[39m             float_format=float_format,\n\u001b[32m   3985\u001b[39m             decimal=decimal,\n\u001b[32m   3986\u001b[39m         )\n\u001b[32m   3987\u001b[39m \n\u001b[32m-> \u001b[39m\u001b[32m3988\u001b[39m         return DataFrameRenderer(formatter).to_csv(\n\u001b[32m   3989\u001b[39m             path_or_buf,\n\u001b[32m   3990\u001b[39m             lineterminator=lineterminator,\n\u001b[32m   3991\u001b[39m             sep=sep,\n",
+      "\u001b[36mFile \u001b[39m\u001b[32m~\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\pandas\\io\\formats\\format.py:1025\u001b[39m, in \u001b[36mDataFrameRenderer.to_csv\u001b[39m\u001b[34m(self, path_or_buf, encoding, sep, columns, index_label, mode, compression, quoting, quotechar, lineterminator, chunksize, date_format, doublequote, escapechar, errors, storage_options)\u001b[39m\n\u001b[32m   1004\u001b[39m     created_buffer = \u001b[38;5;28;01mFalse\u001b[39;00m\n\u001b[32m   1006\u001b[39m csv_formatter = CSVFormatter(\n\u001b[32m   1007\u001b[39m     path_or_buf=path_or_buf,\n\u001b[32m   1008\u001b[39m     lineterminator=lineterminator,\n\u001b[32m   (...)\u001b[39m\u001b[32m   1023\u001b[39m     formatter=\u001b[38;5;28mself\u001b[39m.fmt,\n\u001b[32m   1024\u001b[39m )\n\u001b[32m-> \u001b[39m\u001b[32m1025\u001b[39m \u001b[30;43mcsv_formatter\u001b[39;49m\u001b[30;43m.\u001b[39;49m\u001b[30;43msave\u001b[39;49m\u001b[30;43m(\u001b[39;49m\u001b[30;43m)\u001b[39;49m\n\u001b[32m   1027\u001b[39m \u001b[38;5;28;01mif\u001b[39;00m created_buffer:\n\u001b[32m   1028\u001b[39m     \u001b[38;5;28;01massert\u001b[39;00m \u001b[38;5;28misinstance\u001b[39m(path_or_buf, StringIO)\n",
+      "\u001b[36mFile \u001b[39m\u001b[32m~\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\pandas\\io\\formats\\csvs.py:251\u001b[39m, in \u001b[36mCSVFormatter.save\u001b[39m\u001b[34m(self)\u001b[39m\n\u001b[32m    247\u001b[39m \u001b[38;5;250m\u001b[39m\u001b[33;03m\"\"\"\u001b[39;00m\n\u001b[32m    248\u001b[39m \u001b[33;03mCreate the writer & save.\u001b[39;00m\n\u001b[32m    249\u001b[39m \u001b[33;03m\"\"\"\u001b[39;00m\n\u001b[32m    250\u001b[39m \u001b[38;5;66;03m# apply compression and byte/text conversion\u001b[39;00m\n\u001b[32m--> \u001b[39m\u001b[32m251\u001b[39m \u001b[38;5;28;01mwith\u001b[39;00m \u001b[30;43mget_handle\u001b[39;49m\u001b[30;43m(\u001b[39;49m\n\u001b[32m    252\u001b[39m \u001b[30;43m    \u001b[39;49m\u001b[30;43mself\u001b[39;49m\u001b[30;43m.\u001b[39;49m\u001b[30;43mfilepath_or_buffer\u001b[39;49m\u001b[30;43m,\u001b[39;49m\n\u001b[32m    253\u001b[39m \u001b[30;43m    \u001b[39;49m\u001b[30;43mself\u001b[39;49m\u001b[30;43m.\u001b[39;49m\u001b[30;43mmode\u001b[39;49m\u001b[30;43m,\u001b[39;49m\n\u001b[32m    254\u001b[39m \u001b[30;43m    \u001b[39;49m\u001b[30;43mencoding\u001b[39;49m\u001b[30;43m=\u001b[39;49m\u001b[30;43mself\u001b[39;49m\u001b[30;43m.\u001b[39;49m\u001b[30;43mencoding\u001b[39;49m\u001b[30;43m,\u001b[39;49m\n\u001b[32m    255\u001b[39m \u001b[30;43m    \u001b[39;49m\u001b[30;43merrors\u001b[39;49m\u001b[30;43m=\u001b[39;49m\u001b[30;43mself\u001b[39;49m\u001b[30;43m.\u001b[39;49m\u001b[30;43merrors\u001b[39;49m\u001b[30;43m,\u001b[39;49m\n\u001b[32m    256\u001b[39m \u001b[30;43m    \u001b[39;49m\u001b[30;43mcompression\u001b[39;49m\u001b[30;43m=\u001b[39;49m\u001b[30;43mself\u001b[39;49m\u001b[30;43m.\u001b[39;49m\u001b[30;43mcompression\u001b[39;49m\u001b[30;43m,\u001b[39;49m\n\u001b[32m    257\u001b[39m \u001b[30;43m    \u001b[39;49m\u001b[30;43mstorage_options\u001b[39;49m\u001b[30;43m=\u001b[39;49m\u001b[30;43mself\u001b[39;49m\u001b[30;43m.\u001b[39;49m\u001b[30;43mstorage_options\u001b[39;49m\u001b[30;43m,\u001b[39;49m\n\u001b[32m    258\u001b[39m \u001b[30;43m\u001b[39;49m\u001b[30;43m)\u001b[39;49m \u001b[38;5;28;01mas\u001b[39;00m handles:\n\u001b[32m    259\u001b[39m     \u001b[38;5;66;03m# Note: self.encoding is irrelevant here\u001b[39;00m\n\u001b[32m    260\u001b[39m     \u001b[38;5;66;03m# error: Argument \"quoting\" to \"writer\" has incompatible type \"int\";\u001b[39;00m\n\u001b[32m    261\u001b[39m     \u001b[38;5;66;03m# expected \"Literal[0, 1, 2, 3]\"\u001b[39;00m\n\u001b[32m    262\u001b[39m     \u001b[38;5;28mself\u001b[39m.writer = csvlib.writer(\n\u001b[32m    263\u001b[39m         handles.handle,\n\u001b[32m    264\u001b[39m         lineterminator=\u001b[38;5;28mself\u001b[39m.lineterminator,\n\u001b[32m   (...)\u001b[39m\u001b[32m    269\u001b[39m         quotechar=\u001b[38;5;28mself\u001b[39m.quotechar,\n\u001b[32m    270\u001b[39m     )\n\u001b[32m    272\u001b[39m     \u001b[38;5;28mself\u001b[39m._save()\n",
+      "\u001b[36mFile \u001b[39m\u001b[32m~\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\pandas\\io\\common.py:926\u001b[39m, in \u001b[36mget_handle\u001b[39m\u001b[34m(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)\u001b[39m\n\u001b[32m    921\u001b[39m \u001b[38;5;28;01melif\u001b[39;00m \u001b[38;5;28misinstance\u001b[39m(handle, \u001b[38;5;28mstr\u001b[39m):\n\u001b[32m    922\u001b[39m     \u001b[38;5;66;03m# Check whether the filename is to be opened in binary mode.\u001b[39;00m\n\u001b[32m    923\u001b[39m     \u001b[38;5;66;03m# Binary mode does not support 'encoding' and 'newline'.\u001b[39;00m\n\u001b[32m    924\u001b[39m     \u001b[38;5;28;01mif\u001b[39;00m ioargs.encoding \u001b[38;5;129;01mand\u001b[39;00m \u001b[33m\"\u001b[39m\u001b[33mb\u001b[39m\u001b[33m\"\u001b[39m \u001b[38;5;129;01mnot\u001b[39;00m \u001b[38;5;129;01min\u001b[39;00m ioargs.mode:\n\u001b[32m    925\u001b[39m         \u001b[38;5;66;03m# Encoding\u001b[39;00m\n\u001b[32m--> \u001b[39m\u001b[32m926\u001b[39m         handle = \u001b[30;43mopen\u001b[39;49m\u001b[30;43m(\u001b[39;49m\n\u001b[32m    927\u001b[39m \u001b[30;43m            \u001b[39;49m\u001b[30;43mhandle\u001b[39;49m\u001b[30;43m,\u001b[39;49m\n\u001b[32m    928\u001b[39m \u001b[30;43m            \u001b[39;49m\u001b[30;43mioargs\u001b[39;49m\u001b[30;43m.\u001b[39;49m\u001b[30;43mmode\u001b[39;49m\u001b[30;43m,\u001b[39;49m\n\u001b[32m    929\u001b[39m \u001b[30;43m            \u001b[39;49m\u001b[30;43mencoding\u001b[39;49m\u001b[30;43m=\u001b[39;49m\u001b[30;43mioargs\u001b[39;49m\u001b[30;43m.\u001b[39;49m\u001b[30;43mencoding\u001b[39;49m\u001b[30;43m,\u001b[39;49m\n\u001b[32m    930\u001b[39m \u001b[30;43m            \u001b[39;49m\u001b[30;43merrors\u001b[39;49m\u001b[30;43m=\u001b[39;49m\u001b[30;43merrors\u001b[39;49m\u001b[30;43m,\u001b[39;49m\n\u001b[32m    931\u001b[39m \u001b[30;43m            \u001b[39;49m\u001b[30;43mnewline\u001b[39;49m\u001b[30;43m=\u001b[39;49m\u001b[30;43m\"\u001b[39;49m\u001b[30;43m\"\u001b[39;49m\u001b[30;43m,\u001b[39;49m\n\u001b[32m    932\u001b[39m \u001b[30;43m        \u001b[39;49m\u001b[30;43m)\u001b[39;49m\n\u001b[32m    933\u001b[39m     \u001b[38;5;28;01melse\u001b[39;00m:\n\u001b[32m    934\u001b[39m         \u001b[38;5;66;03m# Binary mode\u001b[39;00m\n\u001b[32m    935\u001b[39m         handle = \u001b[38;5;28mopen\u001b[39m(handle, ioargs.mode)\n",
+      "\u001b[31mPermissionError\u001b[39m: [Errno 13] Permission denied: 'top_10_customers.csv'"
+     ]
+    }
+   ],
+   "source": [
+    "customer_revenue = (\n",
+    "    order.merge(customer, on='customer_id')\n",
+    "         .merge(orders_detail, on='order_id')\n",
+    ")\n",
+    "\n",
+    "customer_revenue['revenue'] = customer_revenue['quantity'] * customer_revenue['unit_price']\n",
+    "\n",
+    "top_10 = (\n",
+    "    customer_revenue\n",
+    "    .groupby('company_name')['revenue']\n",
+    "    .sum()\n",
+    "    .sort_values(ascending=False)\n",
+    "    .head(10)\n",
+    "    .reset_index()\n",
+    ")\n",
+    "\n",
+    "print(top_10)\n",
+    "\n",
+    "# Optional: percentage of total revenue\n",
+    "total_revenue = customer_revenue['revenue'].sum()\n",
+    "top_10['pct_of_total'] = (top_10['revenue'] / total_revenue * 100).round(2)\n",
+    "print(top_10)\n",
+    "top_10.to_csv('top_10_customers.csv', index=False)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "11879abc",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "                       product_name   revenue\n",
+      "0                     Côte de Blaye  149984.2\n",
+      "1           Thüringer Rostbratwurst   87736.4\n",
+      "2              Raclette Courdavault   76296.0\n",
+      "3                 Camembert Pierrot   50286.0\n",
+      "4                    Tarte au sucre   49827.9\n",
+      "5            Gnocchi di nonna Alice   45121.2\n",
+      "6             Manjimup Dried Apples   44742.6\n",
+      "7                      Alice Mutton   35482.2\n",
+      "8                  Carnarvon Tigers   31987.5\n",
+      "9                 Rössle Sauerkraut   26865.6\n",
+      "10           Mozzarella di Giovanni   25738.8\n",
+      "11                      Ipoh Coffee   25079.2\n",
+      "12                 Gudbrandsdalsost   24307.2\n",
+      "13           Sir Rodney's Marmalade   23635.8\n",
+      "14        Wimmers gute Semmelknödel   23009.0\n",
+      "15  Uncle Bob's Organic Dried Pears   22464.0\n",
+      "16                            Ikura   22140.2\n",
+      "17              Gumbär Gummibärchen   21534.9\n",
+      "18                    Perth Pasties   21510.2\n",
+      "19                      Flotemysost   20876.5\n",
+      "\n",
+      "\n",
+      "                       product_name  revenue\n",
+      "0                         Chocolade  1542.75\n",
+      "1                           Geitost  1713.50\n",
+      "2                      Genen Shouyu  1813.50\n",
+      "3         Laughing Lumberjack Lager  2562.00\n",
+      "4                     Longlife Tofu  2566.00\n",
+      "5                        Gravad lax  3047.20\n",
+      "6                     Aniseed Syrup  3080.00\n",
+      "7                          Filo Mix  3383.80\n",
+      "8                  Valkoinen suklaa  3510.00\n",
+      "9         Louisiana Hot Spiced Okra  3519.00\n",
+      "10          NuNuCa Nuß-Nougat-Creme  4051.60\n",
+      "11                       Röd Kaviar  4200.00\n",
+      "12                    Zaanse koeken  4358.60\n",
+      "13                      Rogede sild  4740.50\n",
+      "14               Guaraná Fantástica  4782.60\n",
+      "15                         Tunnbröd  4840.20\n",
+      "16                        Tourtière  5121.00\n",
+      "17                            Konbu  5234.40\n",
+      "18           Chef Anton's Gumbo Mix  5801.15\n",
+      "19                        Spegesild  6144.00\n",
+      "20       Teatime Chocolate Biscuits  6159.50\n",
+      "21           Escargots de Bourgogne  6664.75\n",
+      "22                    Sasquatch Ale  6678.00\n",
+      "23              Gustaf's Knäckebröd  7232.40\n",
+      "24     Grandma's Boysenberry Spread  7345.00\n",
+      "25                   Ravioli Angelo  7807.80\n",
+      "26                             Tofu  8630.40\n",
+      "27             Rhönbräu Klosterbier  8650.55\n",
+      "28                  Mishi Kobe Niku  8827.00\n",
+      "29  Jack's New England Clam Chowder  9098.10\n"
+     ]
+    }
+   ],
+   "source": [
+    "# top 20 products by revenue\n",
+    "product_revenue = product.merge(orders_detail, on='product_id')\n",
+    "product_revenue['revenue'] = product_revenue['quantity'] * product_revenue['unit_price_y']\n",
+    "\n",
+    "top_20_products = (\n",
+    "    product_revenue\n",
+    "    .groupby('product_name')['revenue']\n",
+    "    .sum()\n",
+    "    .sort_values(ascending=False)\n",
+    "    .head(20)\n",
+    "    .reset_index()\n",
+    ")\n",
+    "print(top_20_products)\n",
+    "# top 30 products underperforming by revenue\n",
+    "product_revenue = product.merge(orders_detail, on='product_id')\n",
+    "product_revenue['revenue'] = product_revenue['quantity'] * product_revenue['unit_price_y']\n",
+    "\n",
+    "top_30_underperforming_products = (\n",
+    "    product_revenue\n",
+    "    .groupby('product_name')['revenue']\n",
+    "    .sum()\n",
+    "    .sort_values(ascending=True)\n",
+    "    .head(30)\n",
+    "    .reset_index()\n",
+    ")\n",
+    "print(f'\\n\\n{top_30_underperforming_products}')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "06a2745d",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n",
+      "\n",
+      "    category_name             product_name   revenue\n",
+      "0       Beverages            Côte de Blaye  149984.2\n",
+      "1    Meat/Poultry  Thüringer Rostbratwurst   87736.4\n",
+      "2  Dairy Products     Raclette Courdavault   76296.0\n",
+      "3  Dairy Products        Camembert Pierrot   50286.0\n",
+      "4     Confections           Tarte au sucre   49827.9\n",
+      "\n",
+      "\n",
+      "     category_name                  product_name  quantity   revenue\n",
+      "0     Meat/Poultry               Mishi Kobe Niku        95   8827.00\n",
+      "1       Condiments                  Genen Shouyu       122   1813.50\n",
+      "2          Seafood                    Gravad lax       125   3047.20\n",
+      "3      Confections                     Chocolade       138   1542.75\n",
+      "4        Beverages     Laughing Lumberjack Lager       184   2562.00\n",
+      "5      Confections              Valkoinen suklaa       235   3510.00\n",
+      "6       Condiments     Louisiana Hot Spiced Okra       239   3519.00\n",
+      "7          Seafood                    Röd Kaviar       293   4200.00\n",
+      "8   Dairy Products            Mascarpone Fabioli       297   9171.20\n",
+      "9          Produce                 Longlife Tofu       297   2566.00\n",
+      "10      Condiments        Chef Anton's Gumbo Mix       298   5801.15\n",
+      "11      Condiments  Grandma's Boysenberry Spread       301   7345.00\n",
+      "12     Confections        Sir Rodney's Marmalade       313  23635.80\n",
+      "13     Confections       NuNuCa Nuß-Nougat-Creme       318   4051.60\n",
+      "14      Condiments                 Aniseed Syrup       328   3080.00\n",
+      "15  Dairy Products     Queso Manchego La Pastora       344  12866.80\n",
+      "16  Grains/Cereals           Gustaf's Knäckebröd       348   7232.40\n",
+      "17     Confections            Schoggi Schokolade       365  15231.50\n",
+      "18      Condiments    Northwoods Cranberry Sauce       372  13760.00\n",
+      "19         Produce                          Tofu       404   8630.40\n"
+     ]
+    }
+   ],
+   "source": [
+    "#revenue by category and product\n",
+    "category_products_revenue = (\n",
+    "    product.merge(category, on=\"category_id\")\n",
+    "           .merge(orders_detail, on=\"product_id\")\n",
+    ")\n",
+    "category_products_revenue['revenue'] = category_products_revenue['quantity'] * category_products_revenue['unit_price_y']\n",
+    "category_revenue = category_products_revenue.groupby(['category_name','product_name']).agg({'revenue':'sum'}).sort_values(by='revenue', ascending=False).reset_index()\n",
+    "print(f'\\n\\n{category_revenue.head(5)}')\n",
+    "\n",
+    "#revenue, quantity by category and product\n",
+    "category_products_revenue = (\n",
+    "    product.merge(category, on=\"category_id\")\n",
+    "           .merge(orders_detail, on=\"product_id\")\n",
+    ")\n",
+    "category_products_revenue['revenue'] = category_products_revenue['quantity'] * category_products_revenue['unit_price_y']\n",
+    "category_revenue = category_products_revenue.groupby(['category_name','product_name']).agg({'quantity':'sum','revenue':'sum'}).sort_values(by='quantity', ascending=True).reset_index()\n",
+    "print(f'\\n\\n{category_revenue.head(20)}')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "67510832",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "   last_name first_name    revenue\n",
+      "0    Peacock   Margaret  250187.45\n",
+      "1  Leverling      Janet  213051.30\n",
+      "2    Davolio      Nancy  202143.71\n",
+      "3     Fuller     Andrew  177749.26\n",
+      "4       King     Robert  141295.99\n",
+      "5   Callahan      Laura  133301.03\n",
+      "6  Dodsworth       Anne   82964.00\n",
+      "7     Suyama    Michael   78198.10\n",
+      "8   Buchanan     Steven   75567.75\n"
+     ]
+    }
+   ],
+   "source": [
+    "#employee performance\n",
+    "\n",
+    "employee_revenue = employee.merge(order, on='employee_id').merge(orders_detail, on='order_id')\n",
+    "employee_revenue['revenue']=employee_revenue['quantity'] * employee_revenue['unit_price']\n",
+    "employee_performance= employee_revenue.groupby(['last_name','first_name']).agg({'revenue': \"sum\"}).sort_values(by='revenue', ascending=False).reset_index()\n",
+    "print(f'{employee_performance}')\n",
+    "\n",
+    "\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "78c92a06",
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "NameError",
+     "evalue": "name 'customer' is not defined",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[31m---------------------------------------------------------------------------\u001b[39m",
+      "\u001b[31mNameError\u001b[39m                                 Traceback (most recent call last)",
+      "\u001b[36mCell\u001b[39m\u001b[36m \u001b[39m\u001b[32mIn[1]\u001b[39m\u001b[32m, line 3\u001b[39m\n\u001b[32m      1\u001b[39m \u001b[38;5;66;03m#order differences by customers\u001b[39;00m\n\u001b[32m      2\u001b[39m \n\u001b[32m----> \u001b[39m\u001b[32m3\u001b[39m customer_order_difference= customer.merge(order, how=\u001b[33m'inner'\u001b[39m,on=\u001b[33m'customer_id'\u001b[39m ).merge(orders_detail, on= \u001b[33m'order_id'\u001b[39m)\n",
+      "\u001b[31mNameError\u001b[39m: name 'customer' is not defined"
+     ]
+    }
+   ],
+   "source": [
+    "#order differences by customers\n",
+    "\n",
+    "customer_order_difference = (\n",
+    "    customer.merge(order, how='inner', on='customer_id')\n",
+    "            .merge(orders_detail, on='order_id')\n",
+    ")\n",
+    "            "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "55233bef",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "customer.columns: ['customer_id', 'company_name', 'contact_name', 'contact_title', 'address', 'city', 'region', 'postal_code', 'country', 'phone', 'fax']\n",
+      "category.columns: ['category_id', 'category_name', 'description', 'picture']\n",
+      "employee.columns: ['employee_id', 'last_name', 'first_name', 'title', 'title_of_courtesy', 'birth_date', 'hire_date', 'address', 'city', 'region', 'postal_code', 'country', 'home_phone', 'extension', 'photo', 'notes', 'reports_to', 'photo_path']\n",
+      "order.columns: ['order_id', 'customer_id', 'employee_id', 'order_date', 'required_date', 'shipped_date', 'ship_via', 'freight', 'ship_name', 'ship_address', 'ship_city', 'ship_region', 'ship_postal_code', 'ship_country']\n",
+      "orders_detail.columns: ['order_id', 'product_id', 'unit_price', 'quantity', 'discount']\n",
+      "product.columns: ['product_id', 'product_name', 'supplier_id', 'category_id', 'quantity_per_unit', 'unit_price', 'units_in_stock', 'units_on_order', 'reorder_level', 'discontinued']\n",
+      "shipper.columns: ['shipper_id', 'company_name', 'phone']\n",
+      "supplier.columns: ['supplier_id', 'company_name', 'contact_name', 'contact_title', 'address', 'city', 'region', 'postal_code', 'country', 'phone', 'fax', 'homepage']\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(f'customer.columns: {customer.columns.to_list()}')\n",
+    "print(f'category.columns: {category.columns.to_list()}')\n",
+    "print(f'employee.columns: {employee.columns.to_list()}')\n",
+    "print(f'order.columns: {order.columns.to_list()}')\n",
+    "print(f'orders_detail.columns: {orders_detail.columns.to_list()}')\n",
+    "print(f'product.columns: {product.columns.to_list()}')\n",
+    "print(f'shipper.columns: {shipper.columns.to_list()}')\n",
+    "print(f'supplier.columns: {supplier.columns.to_list()}')"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.12"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
