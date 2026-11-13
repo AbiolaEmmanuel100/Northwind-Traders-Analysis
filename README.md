@@ -2,93 +2,53 @@
 
 ## Project Overview
 
-Northwind Traders is a fictional trading company with a relational database containing information about customers, orders, products, employees, suppliers, and product categories.
+Northwind Traders is a fictional trading company. This project analyzes the Northwind database to uncover business insights on customer value, product performance, employee sales, order patterns, and sales trends.
 
-This project focuses on analyzing the Northwind database to uncover business insights, evaluate sales performance, identify growth opportunities, and highlight potential business risks.
+**Status:** Completed  
+**Date:** November 2026
 
-The analysis is approached from the perspective of a Data Analyst working with a business client.
+## Key Findings
 
-## Business Objective
+- **Top 10 customers** account for ~45.5% of total revenue. The top 3 (QUICK-Stop, Save-a-lot Markets, Ernst Handel) alone represent over 25%.
+- **Top product:** Côte de Blaye generated ~$150,000 in revenue.
+- **Employee performance gap:** Margaret Peacock generated over $250,000 while the lowest performer generated ~$76,000 (more than 3× difference).
+- High-value customers place frequent orders with average order values of $3,700–$4,200.
+- Monthly sales show an upward trend from mid-1996 through early 1998.
 
-Management wants to understand what drives revenue, which customers and products contribute the most to sales, how employees perform, and how sales change over time.
+## Recommendations
 
-The goal is to transform raw business data into meaningful insights that can support better decision-making.
-
-## Business Questions
-
-### 1. Customer Value
-- Who are the top 10 customers by total revenue?
-- How much of the company's total revenue do these customers contribute?
-- Are there customers who contribute significantly more revenue than others?
-
-### 2. Product Performance
-- Which products generate the highest revenue?
-- Which products have low or zero sales?
-- Are there products that may require further investigation or a change in strategy?
-
-### 3. Category Analysis
-- Which product categories generate the most revenue?
-- Are there categories with high sales quantities but relatively low revenue?
-- Which categories offer the strongest revenue opportunities?
-
-### 4. Employee Performance
-- Which employees generate the highest sales?
-- How does sales performance differ across employees?
-- Is there a significant performance gap between the highest and lowest performers?
-
-### 5. Order Patterns
-- What is the average order value?
-- Which customers place frequent, low-value orders?
-- Which customers place fewer but higher-value orders?
-
-### 6. Time Trends
-- How do monthly sales change over time?
-- Are there noticeable sales peaks or declines?
-- Are there seasonal patterns in customer purchasing behaviour?
-
-### 7. Business Opportunities and Risks
-- What is one clear opportunity for increasing revenue?
-- What is one potential business risk revealed by the data?
-- What recommendations can management consider?
+1. Protect and grow relationships with the top 3 customers.
+2. Review low-performing products for potential discontinuation or promotion.
+3. Investigate and replicate practices of top-performing employees.
+4. Develop mid-tier customers to reduce concentration risk.
 
 ## Dataset
 
 **Source:** [Northwind Traders CSV Dataset](https://github.com/tvfukuda/Northwind_csv)
 
-The dataset contains multiple related tables, including:
+## Tools Used
 
-- Customers
-- Orders
-- Order Details
-- Products
-- Categories
-- Employees
-- Suppliers
-- Shippers
+- Python / Pandas
+- SQL (PostgreSQL / Neon)
+- GitHub
 
-These tables will be connected using SQL joins and analysed to answer the business questions.
+## Project Structure
 
-## Tools and Technologies
+```
+Northwind-Traders-Analysis/
+├── README.md
+├── reports/          # Final PDF report
+├── notebooks/        # Jupyter analysis notebooks
+├── sql/              # SQL queries
+└── data/             # Optional data notes
+```
 
-- **Python:** Data analysis and processing
-- **Pandas:** Data exploration, cleaning, transformation, and analysis
-- **SQL:** Querying, joining, aggregating, and analysing relational data
-- **DuckDB:** SQL-based analysis of CSV data directly from online sources
-- **GitHub:** Project documentation and version control
+## How to Use
 
-## Project Deliverables
-
-1. Data exploration and quality assessment.
-2. Data cleaning and preparation.
-3. SQL queries answering the business questions.
-4. Python/Pandas analysis.
-5. Visualizations of important business metrics.
-6. A final report containing key findings, supporting evidence, and business recommendations.
-
-## Expected Outcome
-
-A data-driven business report that helps management understand customer value, product performance, sales trends, and employee performance while identifying opportunities for revenue growth and areas of potential risk.
+1. Review the final report in the `reports/` folder (upload your PDF here).
+2. Check SQL queries in the `sql/` folder.
+3. Explore the analysis logic in notebooks.
 
 ---
 
-**Project Status:** In Progress
+*Analysis performed using joins, aggregations, and business interpretation of the Northwind dataset.*
