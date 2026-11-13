@@ -39,14 +39,17 @@ Northwind-Traders-Analysis/
 ├── README.md
 ├── reports/          # Final PDF report
 ├── notebooks/        # Jupyter analysis notebooks
-├── sql/              # SQL queries
+├── sql/
+│   ├── all_queries.sql   # Complete SQL for all analyses
+│   ├── top_customers.sql
+│   └── employee_performance.sql
 └── data/             # Optional data notes
 ```
 
 ## How to Use
 
-1. Review the final report in the `reports/` folder (upload your PDF here).
-2. Check SQL queries in the `sql/` folder.
+1. Review the final report in the `reports/` folder.
+2. See all SQL queries in `sql/all_queries.sql`.
 3. Explore the analysis logic in notebooks.
 
 ---
